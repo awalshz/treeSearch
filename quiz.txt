@@ -1,0 +1,31 @@
+void swap(int& a, int& b){
+  int temp = a;
+  a = b;
+  b = temp;
+}
+
+void downHeap(Node *n) {
+  if (!n || (!(n->left) && !(n->right))){
+    //do Nothing
+  }
+  else if (n->left && n->value > n->left->value){
+    if (n->right && (n->left->value <= n->right->value)){
+      swap(n->value, n->left->value);
+      downHeap(n->left);  
+    }
+    else if(n->right){
+      swap(n->value, n->right->value);
+      downHeap(n->right);
+    }
+    else{
+      swap(n->value, n->left->value);
+      downHeap(n->left);
+    }
+  }
+  else if (n->right && (n->value > n->right->value)){
+    swap(n->value, n->right->value);
+    downHeap(n->right);
+  }
+  // Implement downHeap() here.
+
+}
